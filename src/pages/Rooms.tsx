@@ -16,7 +16,7 @@ const Rooms = () => {
         'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
       ],
-      price: '₹2,499',
+      price: '₹1,999',
       count: 4,
       size: '320 sq ft',
       capacity: '2 Adults',
@@ -38,7 +38,7 @@ const Rooms = () => {
         'https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
         'https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80'
       ],
-      price: '₹1,999',
+      price: '₹1,699',
       count: 10,
       size: '280 sq ft',
       capacity: '2 Adults',

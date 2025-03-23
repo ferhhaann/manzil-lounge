@@ -44,14 +44,14 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6 text-hotel-gold" />,
       title: 'Phone',
-      details: '+91 98765 43210',
-      action: 'tel:+919876543210'
+      details: '+91 8089654380',
+      action: 'tel:+918089654380'
     },
     {
       icon: <Mail className="h-6 w-6 text-hotel-gold" />,
       title: 'Email',
-      details: 'info@manzillounge.com',
-      action: 'mailto:info@manzillounge.com'
+      details: 'loungeasmanzil@gmail.com',
+      action: 'mailto:loungeasmanzil@gmail.com'
     },
     {
       icon: <MapPin className="h-6 w-6 text-hotel-gold" />,
