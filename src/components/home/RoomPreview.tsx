@@ -49,6 +49,11 @@ const RoomPreview = () => {
                   src={room.image}
                   alt={room.name}
                   className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  onError={(e) => {
+                    console.error(`Failed to load image for ${room.name}`, e);
+                    // Set a fallback image or color
+                    e.currentTarget.src = "https://placehold.co/600x400/navy/white?text=Room+Image";
+                  }}
                 />
                 <div className="absolute top-4 right-4 bg-hotel-navy text-white px-3 py-1 rounded-full text-sm font-medium">
                   {room.price} / night

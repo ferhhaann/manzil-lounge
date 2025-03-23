@@ -1,21 +1,40 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  
+  useEffect(() => {
+    // Preload the image
+    const img = new Image();
+    img.src = "/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png";
+    img.onload = () => setImageLoaded(true);
+    img.onerror = () => setImageError(true);
+  }, []);
+
   return (
     <div className="relative min-h-screen overflow-hidden">
       {/* Hero Image */}
       <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 bg-gradient-to-r from-hotel-navy/80 to-hotel-navy/40"
-        ></div>
-        <img 
-          src="/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png" 
-          alt="Manzil Lounge Hotel" 
-          className="absolute inset-0 w-full h-full object-cover object-center" 
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-hotel-navy/80 to-hotel-navy/40"></div>
+        
+        {imageError ? (
+          // Fallback to a placeholder or gradient if image fails to load
+          <div className="absolute inset-0 bg-hotel-navy"></div>
+        ) : (
+          <img 
+            src="/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png"
+            alt="Manzil Lounge Hotel" 
+            className={`absolute inset-0 w-full h-full object-cover object-center ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            style={{ transition: 'opacity 0.3s ease-in-out' }}
+          />
+        )}
+        
+        {/* Console log for debugging */}
+        {console.log("Image loaded:", imageLoaded, "Image error:", imageError)}
       </div>
       
       {/* Content */}
