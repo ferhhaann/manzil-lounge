@@ -11,7 +11,7 @@ const Hero = () => {
         <div 
           className="absolute inset-0 bg-gradient-to-r from-hotel-navy/80 to-hotel-navy/40"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`,
+            backgroundImage: `url('/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             mixBlendMode: 'overlay'

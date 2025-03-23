@@ -12,7 +12,7 @@ const Rooms = () => {
       name: 'Premium Room',
       description: 'Our Premium Rooms offer a spacious retreat with enhanced amenities and elegant furnishings. Each room features a comfortable queen-sized bed, work desk, and additional seating area to ensure a relaxing and productive stay.',
       images: [
-        'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80',
+        '/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png',
         'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80'
       ],

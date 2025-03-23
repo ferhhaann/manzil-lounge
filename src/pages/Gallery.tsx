@@ -34,7 +34,7 @@ const Gallery = () => {
       category: 'Rooms',
       images: [
         {
-          src: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80',
+          src: '/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png',
           alt: 'Premium Room',
           description: 'Our spacious Premium Room'
         },
