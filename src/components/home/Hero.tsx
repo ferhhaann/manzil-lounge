@@ -10,13 +10,12 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div 
           className="absolute inset-0 bg-gradient-to-r from-hotel-navy/80 to-hotel-navy/40"
-          style={{
-            backgroundImage: `url('/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            mixBlendMode: 'overlay'
-          }}
         ></div>
+        <img 
+          src="/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png" 
+          alt="Manzil Lounge Hotel" 
+          className="absolute inset-0 w-full h-full object-cover object-center" 
+        />
       </div>
       
       {/* Content */}
