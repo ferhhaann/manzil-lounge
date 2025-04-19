@@ -12,15 +12,15 @@ const RoomPreview = () => {
       description: 'Spacious and comfortable premium rooms featuring modern amenities and elegant decor.',
       image: '/lovable-uploads/room1.jpg',
       price: '₹1,999',
-      features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Room Service']
+      features: ['Free WiFi', 'Air Conditioning', 'Smart TV', 'Room Service']
     },
     {
       id: 'deluxe',
       name: 'Deluxe Room',
       description: 'Cozy and affordable deluxe rooms perfect for travelers seeking comfort and value.',
-      image: '/lovable-uploads/4287f937-1c50-4c16-a1a2-98eba0cc281e.png',
+      image: '/lovable-uploads/room2.jpg',
       price: '₹1,699',
-      features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Private Bathroom']
+      features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Room Service']
     }
   ];
   
