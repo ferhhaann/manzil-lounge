@@ -1,10 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate();
   
   useEffect(() => {
     // Preload the image
@@ -18,6 +21,10 @@ const Hero = () => {
       img.onerror = null;
     };
   }, []);
+
+  const handleBookNow = () => {
+    navigate('/booking');
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -54,6 +61,7 @@ const Hero = () => {
               variant="accent" 
               size="lg" 
               className="group"
+              onClick={handleBookNow}
             >
               Book Your Stay
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
