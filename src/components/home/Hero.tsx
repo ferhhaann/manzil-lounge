@@ -62,7 +62,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Button 
               variant="accent" 
-              size={isMobile ? "default" : "lg"} 
+              size={isMobile ? "sm" : "lg"} 
               className="group w-full sm:w-auto"
               onClick={handleBookNow}
             >
@@ -71,7 +71,7 @@ const Hero = () => {
             </Button>
             <Button 
               variant="outline" 
-              size={isMobile ? "default" : "lg"} 
+              size={isMobile ? "sm" : "lg"} 
               className="border-white hover:bg-white/10 text-white w-full sm:w-auto"
               onClick={handleExploreRooms}
             >
