@@ -9,6 +9,7 @@ import {
 import Button from '../common/Button';
 import { cn } from '@/lib/utils';
 import { X } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -35,23 +36,25 @@ const MobileMenu = ({
               <span className="sr-only">Close</span>
             </DrawerClose>
           </div>
-          <div className="flex flex-col space-y-4 flex-grow overflow-auto py-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                onClick={onClose}
-                className={cn(
-                  'text-lg py-3 px-4 rounded-md transition-colors',
-                  isActive(link.path)
-                    ? 'bg-hotel-beige text-hotel-navy font-medium'
-                    : 'text-muted-foreground hover:bg-hotel-beige hover:text-hotel-navy'
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
+          <ScrollArea className="flex-grow">
+            <div className="flex flex-col space-y-4 py-4 px-2">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={onClose}
+                  className={cn(
+                    'text-lg py-3 px-4 rounded-md transition-colors',
+                    isActive(link.path)
+                      ? 'bg-hotel-beige text-hotel-navy font-medium'
+                      : 'text-muted-foreground hover:bg-hotel-beige hover:text-hotel-navy'
+                  )}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </ScrollArea>
           <div className="pt-4 mt-auto">
             <Button 
               variant="accent" 
