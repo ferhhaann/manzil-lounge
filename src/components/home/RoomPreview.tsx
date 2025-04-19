@@ -10,7 +10,7 @@ const RoomPreview = () => {
       id: 'premium',
       name: 'Premium Room',
       description: 'Spacious and comfortable premium rooms featuring modern amenities and elegant decor.',
-      image: '/lovable-uploads/7d25e890-fbf6-434a-9360-d49ebb675410.png',
+      image: '/lovable-uploads/room1.jpg',
       price: '₹1,999',
       features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Room Service']
     },

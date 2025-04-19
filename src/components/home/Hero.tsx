@@ -35,9 +35,6 @@ const Hero = () => {
             style={{ transition: 'opacity 0.3s ease-in-out' }}
           />
         )}
-        
-        {/* Console log for debugging */}
-        {console.log("Image loaded:", imageLoaded, "Image error:", imageError)}
       </div>
       
       {/* Content */}
