@@ -23,7 +23,7 @@ const Rooms = () => {
       amenities: [
         { name: 'Free WiFi', icon: <Wifi size={18} /> },
         { name: 'Air Conditioning', icon: <Wind size={18} /> },
-        { name: '32" LED TV', icon: <Tv size={18} /> },
+        { name: '40" Smart TV', icon: <Tv size={18} /> },
         { name: 'Tea/Coffee Maker', icon: <Coffee size={18} /> },
         { name: 'Premium Bathroom', icon: <ShowerHead size={18} /> },
         { name: 'Queen-sized Bed', icon: <Users size={18} /> }
@@ -34,7 +34,7 @@ const Rooms = () => {
       name: 'Deluxe Room',
       description: 'Our Deluxe Rooms provide a cozy and comfortable space with all essential amenities. Featuring a double bed, private bathroom, and work area, these rooms are perfect for travelers seeking value without compromising on comfort.',
       images: [
-        '/lovable-uploads/4287f937-1c50-4c16-a1a2-98eba0cc281e.png',
+        '/lovable-uploads/room2.jpg',
         'https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
         'https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80'
       ],
@@ -46,7 +46,7 @@ const Rooms = () => {
         { name: 'Free WiFi', icon: <Wifi size={18} /> },
         { name: 'Air Conditioning', icon: <Wind size={18} /> },
         { name: '24" LED TV', icon: <Tv size={18} /> },
-        { name: 'Private Bathroom', icon: <ShowerHead size={18} /> }
+        // { name: 'Private Bathroom', icon: <ShowerHead size={18} /> }
       ]
     }
   ];
