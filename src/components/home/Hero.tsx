@@ -9,7 +9,7 @@ const Hero = () => {
   useEffect(() => {
     // Preload the image
     const img = new Image();
-    img.src = "/lovable-uploads/room1.png";
+    img.src = "/lovable-uploads/room1.jpg";
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageError(true);
     
@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-hotel-navy"></div>
         ) : (
           <img 
-            src="/lovable-uploads/room1.png"
+            src="/lovable-uploads/room1.jpg"
             alt="Manzil Lounge Hotel" 
             className={`absolute inset-0 w-full h-full object-cover object-center ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ transition: 'opacity 0.3s ease-in-out' }}

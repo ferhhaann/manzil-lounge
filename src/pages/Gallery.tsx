@@ -34,7 +34,7 @@ const Gallery = () => {
       category: 'Rooms',
       images: [
         {
-          src: '/lovable-uploads/room1.png',
+          src: '/lovable-uploads/room1.jpg',
           alt: 'Premium Room',
           description: 'Our spacious Premium Room'
         },
