@@ -34,7 +34,7 @@ const Rooms = () => {
       name: 'Deluxe Room',
       description: 'Our Deluxe Rooms provide a cozy and comfortable space with all essential amenities. Featuring a double bed, private bathroom, and work area, these rooms are perfect for travelers seeking value without compromising on comfort.',
       images: [
-        '/lovable-uploads/065161ab-6fd6-4e2b-b1ae-7820a8533267.png',
+        '/lovable-uploads/4287f937-1c50-4c16-a1a2-98eba0cc281e.png',
         'https://images.unsplash.com/photo-1618219944342-824e40a13285?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
         'https://images.unsplash.com/photo-1533090368676-1fd25485db88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1169&q=80'
       ],

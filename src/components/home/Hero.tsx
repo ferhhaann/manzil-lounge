@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
@@ -27,7 +26,6 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-hotel-navy/80 to-hotel-navy/40"></div>
         
         {imageError ? (
-          // Fallback to a placeholder or gradient if image fails to load
           <div className="absolute inset-0 bg-hotel-navy"></div>
         ) : (
           <img 
