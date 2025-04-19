@@ -1,11 +1,13 @@
-
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/common/Button';
 import { Wifi, Tv, Wind, Coffee, ShowerHead, Users } from 'lucide-react';
 
 const Rooms = () => {
+  const navigate = useNavigate();
+
   const rooms = [
     {
       id: 'premium',
@@ -127,7 +129,12 @@ const Rooms = () => {
                           <span className="text-sm text-muted-foreground">Starting from</span>
                           <p className="text-xl font-medium text-hotel-navy">{room.price} <span className="text-sm text-muted-foreground">/ night</span></p>
                         </div>
-                        <Button variant="accent">Book Now</Button>
+                        <Button 
+                          variant="accent"
+                          onClick={() => navigate('/booking')}
+                        >
+                          Book Now
+                        </Button>
                       </div>
                     </div>
                   </div>
