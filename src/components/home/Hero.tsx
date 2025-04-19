@@ -29,7 +29,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-hotel-navy"></div>
         ) : (
           <img 
-            src="/lovable-uploads/room1.jpg"
+            src="public/lovable-uploads/room1.jpg"
             alt="Manzil Lounge Hotel" 
             className={`absolute inset-0 w-full h-full object-cover object-center ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ transition: 'opacity 0.3s ease-in-out' }}
