@@ -18,7 +18,7 @@ const RoomPreview = () => {
       id: 'deluxe',
       name: 'Deluxe Room',
       description: 'Cozy and affordable deluxe rooms perfect for travelers seeking comfort and value.',
-      image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+      image: '/lovable-uploads/5d3770bf-8f05-448f-a478-32b6534f7193.png',
       price: '₹1,699',
       features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Private Bathroom']
     }
