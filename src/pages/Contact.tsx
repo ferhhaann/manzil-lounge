@@ -277,7 +277,7 @@ const Contact = () => {
             </p>
             <div className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
               <Phone className="text-hotel-gold mr-3" />
-              <span className="text-white font-medium text-lg">+91 98765 43210</span>
+              <span className="text-white font-medium text-lg">+91 8089654380</span>
             </div>
           </div>
         </div>
