@@ -1,14 +1,17 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from '../common/Button';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const isMobile = useIsMobile();
   
   const toggleMenu = () => setIsOpen(!isOpen);
   
@@ -47,6 +50,7 @@ const Navbar = () => {
   
   const handleBookNow = () => {
     navigate('/booking');
+    setIsOpen(false);
   };
   
   return (
@@ -59,7 +63,7 @@ const Navbar = () => {
       <div className="container-custom flex items-center justify-between">
         <Link 
           to="/" 
-          className="flex items-center space-x-2 font-serif text-2xl text-hotel-navy"
+          className="flex items-center space-x-2 font-serif text-2xl text-hotel-navy z-50"
         >
           <span className="font-bold">Manzil</span>
           <span className="text-hotel-gold">Lounge</span>
@@ -92,7 +96,7 @@ const Navbar = () => {
         
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-hotel-navy" 
+          className="md:hidden text-hotel-navy z-50" 
           onClick={toggleMenu}
           aria-label="Menu"
         >
@@ -103,11 +107,37 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div 
         className={cn(
-          'md:hidden fixed inset-0 bg-white z-40 pt-20 px-4 transition-transform duration-300 ease-in-out',
-          isOpen ? 'translate-y-0' : '-translate-y-full'
+          'md:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out pt-20',
+          isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        {/* Empty mobile menu - removing all navigation options as requested */}
+        <div className="container-custom px-4 flex flex-col space-y-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              onClick={() => setIsOpen(false)}
+              className={cn(
+                'text-lg py-2 px-4 rounded-md transition-colors',
+                isActive(link.path)
+                  ? 'bg-hotel-beige text-hotel-navy font-medium'
+                  : 'text-muted-foreground hover:bg-hotel-beige hover:text-hotel-navy'
+              )}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="pt-4">
+            <Button 
+              variant="accent" 
+              size="lg" 
+              onClick={handleBookNow}
+              className="w-full"
+            >
+              Book Now
+            </Button>
+          </div>
+        </div>
       </div>
     </nav>
   );

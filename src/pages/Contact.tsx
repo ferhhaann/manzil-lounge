@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
@@ -72,7 +71,7 @@ const Contact = () => {
       <Navbar />
       
       {/* Page Header */}
-      <div className="pt-24 pb-12 bg-hotel-navy relative">
+      <div className="pt-20 md:pt-24 pb-8 md:pb-12 bg-hotel-navy relative">
         <div 
           className="absolute inset-0 opacity-20"
           style={{
@@ -82,49 +81,49 @@ const Contact = () => {
           }}
         ></div>
         <div className="container-custom relative z-10">
-          <h1 className="text-4xl font-serif font-medium text-white mb-3">
+          <h1 className="text-3xl md:text-4xl font-serif font-medium text-white mb-3">
             Contact Us
           </h1>
-          <p className="text-white/80 max-w-2xl">
+          <p className="text-white/80 max-w-2xl text-sm md:text-base">
             Get in touch with us for bookings, inquiries, or any assistance you might need.
           </p>
         </div>
       </div>
       
       {/* Contact Info Section */}
-      <section className="py-16 bg-white">
+      <section className="py-8 md:py-16 bg-white">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-16">
             {contactInfo.map((info, index) => (
               <a 
                 key={index}
                 href={info.action}
                 target={info.action.startsWith('http') ? '_blank' : '_self'}
                 rel={info.action.startsWith('http') ? 'noopener noreferrer' : ''}
-                className="bg-white p-6 rounded-lg shadow-md border border-hotel-beige hover:border-hotel-gold transition-colors group"
+                className="bg-white p-4 md:p-6 rounded-lg shadow-md border border-hotel-beige hover:border-hotel-gold transition-colors group"
               >
-                <div className="mb-4 text-hotel-navy group-hover:text-hotel-gold transition-colors">
+                <div className="mb-3 md:mb-4 text-hotel-navy group-hover:text-hotel-gold transition-colors">
                   {info.icon}
                 </div>
-                <h3 className="text-xl font-serif font-medium mb-2 text-hotel-navy">
+                <h3 className="text-lg md:text-xl font-serif font-medium mb-2 text-hotel-navy">
                   {info.title}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-sm md:text-base text-muted-foreground">
                   {info.details}
                 </p>
               </a>
             ))}
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
             {/* Contact Form */}
             <div>
               <span className="section-subtitle">GET IN TOUCH</span>
-              <h2 className="section-title mb-6">
+              <h2 className="section-title mb-4 md:mb-6 text-2xl md:text-3xl">
                 Send Us a Message
               </h2>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">
@@ -222,7 +221,7 @@ const Contact = () => {
             
             {/* WhatsApp & Direct Contact */}
             <div>
-              <div className="bg-hotel-lightBeige p-8 rounded-lg border border-hotel-beige mb-8">
+              <div className="bg-hotel-lightBeige p-6 md:p-8 rounded-lg border border-hotel-beige mb-6 md:mb-8">
                 <div className="flex items-start space-x-4">
                   <div className="mt-1 text-green-600">
                     <MessageSquare size={24} />
@@ -247,7 +246,7 @@ const Contact = () => {
                 </div>
               </div>
               
-              <div className="rounded-lg overflow-hidden">
+              <div className="rounded-lg overflow-hidden h-[250px] md:h-[300px]">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15782.815827475622!2d76.89872603049925!3d8.570976036861325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05beb825a14333%3A0x4ae71beeef9faf1!2sKazhakkoottam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1649320876851!5m2!1sen!2sin" 
                   width="100%" 
@@ -266,18 +265,18 @@ const Contact = () => {
       </section>
       
       {/* Quick Contact Banner */}
-      <section className="py-12 bg-hotel-navy">
+      <section className="py-8 md:py-12 bg-hotel-navy">
         <div className="container-custom">
           <div className="text-center">
-            <h2 className="text-2xl md:text-3xl font-serif font-medium mb-4 text-white">
+            <h2 className="text-xl md:text-3xl font-serif font-medium mb-3 md:mb-4 text-white">
               Need Immediate Assistance?
             </h2>
-            <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+            <p className="text-white/80 mb-4 md:mb-6 max-w-2xl mx-auto text-sm md:text-base">
               Our reception is available 24/7 to assist you with bookings, inquiries, or any support you might need.
             </p>
-            <div className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full">
-              <Phone className="text-hotel-gold mr-3" />
-              <span className="text-white font-medium text-lg">+91 8089654380</span>
+            <div className="inline-flex items-center justify-center bg-white/10 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 rounded-full">
+              <Phone className="text-hotel-gold mr-2 md:mr-3" />
+              <span className="text-white font-medium text-base md:text-lg">+91 8089654380</span>
             </div>
           </div>
         </div>
