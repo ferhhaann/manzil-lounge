@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
@@ -12,6 +13,11 @@ const Hero = () => {
     img.src = "/lovable-uploads/7d25e890-fbf6-434a-9360-d49ebb675410.png";
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageError(true);
+    
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
   }, []);
 
   return (
