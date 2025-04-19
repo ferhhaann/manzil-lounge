@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -108,28 +107,7 @@ const Navbar = () => {
           isOpen ? 'translate-y-0' : '-translate-y-full'
         )}
       >
-        <div className="flex flex-col space-y-6 p-4">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.path}
-              className={cn(
-                'text-lg py-2 border-b border-hotel-beige',
-                isActive(link.path) ? 'text-hotel-navy font-medium' : 'text-muted-foreground'
-              )}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Button 
-            variant="accent" 
-            size="lg" 
-            className="w-full mt-6"
-            onClick={handleBookNow}
-          >
-            Book Now
-          </Button>
-        </div>
+        {/* Empty mobile menu - removing all navigation options as requested */}
       </div>
     </nav>
   );
