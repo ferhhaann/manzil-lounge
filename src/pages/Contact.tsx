@@ -235,7 +235,7 @@ const Contact = () => {
                       For quick responses and real-time assistance, reach out to us on WhatsApp. Our team is ready to help you with your queries.
                     </p>
                     <a 
-                      href="https://wa.me/8089654380" 
+                      href="https://wa.me/+918089654380" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md inline-flex items-center"
