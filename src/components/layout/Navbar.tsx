@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import Button from '../common/Button';
 import { cn } from '@/lib/utils';
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   
   const toggleMenu = () => setIsOpen(!isOpen);
   
@@ -45,6 +46,10 @@ const Navbar = () => {
     return false;
   };
   
+  const handleBookNow = () => {
+    navigate('/booking');
+  };
+  
   return (
     <nav 
       className={cn(
@@ -77,7 +82,11 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <Button variant="accent" size="md">
+          <Button 
+            variant="accent" 
+            size="md" 
+            onClick={handleBookNow}
+          >
             Book Now
           </Button>
         </div>
@@ -112,7 +121,12 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Button variant="accent" size="lg" className="w-full mt-6">
+          <Button 
+            variant="accent" 
+            size="lg" 
+            className="w-full mt-6"
+            onClick={handleBookNow}
+          >
             Book Now
           </Button>
         </div>
