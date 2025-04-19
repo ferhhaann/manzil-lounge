@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -13,7 +12,25 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isMobile = useIsMobile();
   
-  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  };
+  
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
+  
+  useEffect(() => {
+    setIsOpen(false);
+    document.body.style.overflow = 'unset';
+  }, [location.pathname]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -27,11 +44,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
   
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -69,7 +81,6 @@ const Navbar = () => {
           <span className="text-hotel-gold">Lounge</span>
         </Link>
         
-        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <div className="flex items-center space-x-6">
             {navLinks.map((link) => (
@@ -94,7 +105,6 @@ const Navbar = () => {
           </Button>
         </div>
         
-        {/* Mobile Menu Button */}
         <button 
           className="md:hidden text-hotel-navy z-50" 
           onClick={toggleMenu}
@@ -104,7 +114,6 @@ const Navbar = () => {
         </button>
       </div>
       
-      {/* Mobile Menu */}
       <div 
         className={cn(
           'md:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out pt-20',
