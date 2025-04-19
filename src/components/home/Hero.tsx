@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
@@ -10,7 +9,7 @@ const Hero = () => {
   useEffect(() => {
     // Preload the image
     const img = new Image();
-    img.src = "/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png";
+    img.src = "/lovable-uploads/7d25e890-fbf6-434a-9360-d49ebb675410.png";
     img.onload = () => setImageLoaded(true);
     img.onerror = () => setImageError(true);
   }, []);
@@ -26,7 +25,7 @@ const Hero = () => {
           <div className="absolute inset-0 bg-hotel-navy"></div>
         ) : (
           <img 
-            src="/lovable-uploads/cfa89f90-5c91-405b-a97c-694cf32bb17c.png"
+            src="/lovable-uploads/7d25e890-fbf6-434a-9360-d49ebb675410.png"
             alt="Manzil Lounge Hotel" 
             className={`absolute inset-0 w-full h-full object-cover object-center ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             style={{ transition: 'opacity 0.3s ease-in-out' }}
