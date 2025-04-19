@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -119,6 +120,7 @@ const Navbar = () => {
           'md:hidden fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out pt-20',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
+        style={{ backgroundColor: 'white' }} // Explicitly setting background color
       >
         <div className="container-custom px-4 flex flex-col space-y-4">
           {navLinks.map((link) => (
