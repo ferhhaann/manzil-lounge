@@ -67,7 +67,7 @@ const Navbar = () => {
   
   return (
     <>
-      <nav style={{ backgroundColor: !scrolled ? 'rgba(255, 255, 255, 0.39)' : '' }}
+      <nav style={{ backgroundColor: !scrolled ? '#fff' : '' }}
         className={cn(
           'fixed top-0 left-0 w-full z-50 transition-all duration-300',
           scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
@@ -78,9 +78,9 @@ const Navbar = () => {
             to="/" 
             className="flex items-center space-x-2 font-serif text-2xl text-hotel-navy z-50"
           >
-            {/* <img src="/lovable-uploads/newlogo.png" alt="logo" style={{height:'50px', width:'auto'}}/> */}
-            <span className="font-bold">Manzil</span>
-            <span className="text-hotel-gold">Lounge</span>
+            <img src="/lovable-uploads/newlogo.png" alt="logo" style={{height:'50px', width:'auto'}}/>
+            {/* <span className="font-bold">Manzil</span>
+            <span className="text-hotel-gold">Lounge</span> */}
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">

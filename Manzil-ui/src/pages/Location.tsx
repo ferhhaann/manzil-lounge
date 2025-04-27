@@ -26,7 +26,7 @@ const Location = () => {
       name: 'Napier Museum',
       distance: '10 km (20 min drive)',
       icon: <Building className="h-6 w-6 text-hotel-gold" />
-    }
+    },
   ];
   
   const transportInfo = [
@@ -94,7 +94,7 @@ const Location = () => {
           
           <div className="rounded-lg overflow-hidden shadow-lg border border-hotel-beige mb-12">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15782.815827475622!2d76.89872603049925!3d8.570976036861325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05beb825a14333%3A0x4ae71beeef9faf1!2sKazhakkoottam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1649320876851!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4184531152364!2d76.8715698750133!3d8.555698591487978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bfb4877b0e75%3A0xffa3f2133a113cf3!2sAS%20Manzil%20Lounge!5e0!3m2!1sen!2sin!4v1745126159865!5m2!1sen!2sin" 
               width="100%" 
               height="500" 
               style={{ border: 0 }}
@@ -192,19 +192,19 @@ const Location = () => {
             </div>
             
             <div className="space-y-4">
-              <img 
+              {/* <img 
                 src="https://images.unsplash.com/photo-1580745924772-f2bed4b1c502?ixlib=rb-4.0.3&auto=format&fit=crop&w=1324&q=80" 
                 alt="Nearby attractions in Trivandrum"
                 className="w-full rounded-lg shadow-md"
-              />
+              /> */}
               <div className="grid grid-cols-2 gap-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1585538617950-6d5b31515c38?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" 
+                  src="/lovable-uploads/kovalam.jpg" 
                   alt="Kovalam Beach"
                   className="w-full h-48 object-cover rounded-lg shadow-md"
                 />
                 <img 
-                  src="https://images.unsplash.com/photo-1518080614899-98fc14f78337?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80" 
+                  src="/lovable-uploads/temple.jpg" 
                   alt="Padmanabhaswamy Temple"
                   className="w-full h-48 object-cover rounded-lg shadow-md"
                 />

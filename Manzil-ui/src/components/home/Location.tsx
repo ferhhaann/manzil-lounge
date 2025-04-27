@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MapPin, Train, Plane, Car } from 'lucide-react';
 import Button from '../common/Button';
 import { Link } from 'react-router-dom';
@@ -27,6 +27,9 @@ const Location = () => {
       description: 'Technopark is just 5 minutes drive from the hotel.'
     }
   ];
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   
   return (
     <section className="py-20 bg-hotel-navy text-white relative overflow-hidden">
@@ -75,7 +78,7 @@ const Location = () => {
           
           <div className="rounded-lg overflow-hidden shadow-lg">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15782.815827475622!2d76.89872603049925!3d8.570976036861325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05beb825a14333%3A0x4ae71beeef9faf1!2sKazhakkoottam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1649320876851!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4184531155943!2d76.87156451090001!3d8.555698591452515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bfb4877b0e75%3A0xffa3f2133a113cf3!2sAS%20Manzil%20Lounge!5e0!3m2!1sen!2sin!4v1745126963288!5m2!1sen!2sin" 
               width="100%" 
               height="450" 
               style={{ border: 0 }}

@@ -1,9 +1,11 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { DatePickerWithRange } from '@/components/booking/DateRangePicker';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { toast } from 'sonner';
+import emailjs from 'emailjs-com';
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -16,6 +18,7 @@ const Booking = () => {
       to: '',
     },
   });
+  const [loading, setLoading] = useState(false);
 
   const inputClass =
     'w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-hotel-gold focus:border-hotel-gold';
@@ -37,40 +40,73 @@ const Booking = () => {
       },
     });
   };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+  
+    const { from, to } = formData.dateRange;
+  
+    if (!from || !to) {
+      toast.error('Please select both check-in and check-out dates.');
+      return;
+    }
+  
     const phoneValid = /^\+\d{10,15}$/.test(formData.phone);
     if (!phoneValid) {
-      alert('Phone number must include country code and contain only digits (e.g. +919876543210)');
+      toast.error('Phone number must include country code and contain only digits (e.g. +919876543210)');
+      return;
+    }
+  
+    setLoading(true); // Start loading
+  
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      roomType: formData.roomType,
+      checkin: new Date(from).toLocaleDateString('en-GB'),
+      checkout: new Date(to).toLocaleDateString('en-GB'),
+    };
+  
+    emailjs
+      .send(
+        'service_veymaee',
+        'template_yqcq86p',
+        templateParams,
+        'to2m0kTtNdkXyBlep'
+      )
+      .then(() => {
+        toast.success('Booking enquiry sent to hotel!');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          roomType: '',
+          dateRange: { from: '', to: '' },
+        });
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        toast.error('Failed to send booking email.');
+      })
+      .finally(() => setLoading(false)); // Stop loading
+  };
+  
+
+  const handleWhatsApp = () => {
+    const { from, to } = formData.dateRange;
+
+    if (!from || !to) {
+      toast.error('Please select both check-in and check-out dates.');
       return;
     }
 
-    const response = await fetch('http://localhost:5000/api/send-enquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert('Booking enquiry sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        roomType: '',
-        dateRange: { from: '', to: '' },
-      });
-    } else {
-      alert('Failed to send enquiry.');
-    }
-  };
-
-  const handleWhatsApp = () => {
     const phoneValid = /^\+\d{10,15}$/.test(formData.phone);
     if (!phoneValid) {
-      alert('Phone number must include country code and contain only digits (e.g. +919876543210)');
+      toast.error('Phone number must include country code and contain only digits.');
       return;
     }
 
@@ -80,8 +116,8 @@ Name: ${formData.name}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Room Type: ${formData.roomType}
-Check-in: ${formData.dateRange.from || 'Not selected'}
-Check-out: ${formData.dateRange.to || 'Not selected'}
+Check-in: ${new Date(from).toLocaleDateString('en-GB')}
+Check-out: ${new Date(to).toLocaleDateString('en-GB')}
 `;
 
     const encodedMessage = encodeURIComponent(message);
@@ -93,7 +129,6 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
     <div className="min-h-screen">
       <Navbar />
 
-      {/* Header */}
       <div className="pt-24 pb-12 bg-hotel-navy relative">
         <div
           className="absolute inset-0 opacity-20"
@@ -109,7 +144,6 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
         </div>
       </div>
 
-      {/* Booking Form */}
       <section className="py-16 bg-hotel-lightBeige">
         <div className="container-custom max-w-4xl">
           <form onSubmit={handleSubmit}>
@@ -119,7 +153,6 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
                 <CardDescription>Please fill out your details and submit the enquiry</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                {/* User Info */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <input
                     type="text"
@@ -130,7 +163,6 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
                     onChange={handleInputChange}
                     className={inputClass}
                   />
-
                   <input
                     type="email"
                     name="email"
@@ -140,7 +172,6 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
                     onChange={handleInputChange}
                     className={inputClass}
                   />
-
                   <input
                     type="tel"
                     name="phone"
@@ -159,10 +190,8 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
                   />
                 </div>
 
-                {/* Date Range Picker */}
                 <DatePickerWithRange onChange={handleDateChange} />
 
-                {/* Room Type */}
                 <div className="space-y-4">
                   <h3 className="text-lg font-medium">Select Room Type</h3>
                   <div className="grid gap-4 md:grid-cols-2">
@@ -189,20 +218,19 @@ Check-out: ${formData.dateRange.to || 'Not selected'}
                   </div>
                 </div>
 
-                {/* Submit via Email Backend */}
-                {/* <div className="mt-6"> */}
-                  {/* <button
-                    type="submit"
-                    className="bg-hotel-navy text-white px-6 py-2 rounded-lg hover:bg-hotel-gold transition-colors"
-                  >
-                    Submit Enquiry (Email)
-                  </button> */}
-                {/* </div> */}
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`bg-hotel-navy text-white px-6 py-2 rounded-lg transition-colors ${
+                    loading ? 'opacity-70 cursor-not-allowed' : 'hover:bg-hotel-gold'
+                  }`}
+                >
+                  {loading ? 'Sending...' : 'Submit Enquiry (Email)'}
+                </button>
 
-                {/* OR */}
-                {/* <div className="text-center text-sm text-muted-foreground mt-2">— or —</div> */}
 
-                {/* WhatsApp Button */}
+                <div className="text-center text-sm text-muted-foreground mt-2">— or —</div>
+
                 <div className="flex justify-center mt-4">
                   <button
                     type="button"

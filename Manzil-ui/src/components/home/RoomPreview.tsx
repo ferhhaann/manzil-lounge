@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../common/Button';
 import { ArrowRight } from 'lucide-react';
@@ -23,6 +23,9 @@ const RoomPreview = () => {
       features: ['Free WiFi', 'Air Conditioning', 'LED TV', 'Room Service']
     }
   ];
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   
   return (
     <section className="py-20 bg-hotel-lightBeige">

@@ -46,11 +46,11 @@ const Footer = () => {
                   Rooms & Accommodation
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to="/dining" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
                   Dining Space
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/location" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
                   Location & Accessibility

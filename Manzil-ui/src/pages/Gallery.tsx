@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { X } from 'lucide-react';
@@ -44,57 +44,57 @@ const Gallery = () => {
           description: 'Comfortable Deluxe Room'
         },
         {
-          src: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+          src: '/lovable-uploads/interior.jpg',
           alt: 'Room Interior',
           description: 'Elegantly designed interiors'
         },
         {
-          src: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+          src: '/lovable-uploads/washroom.jpg',
           alt: 'Bathroom',
           description: 'Modern and clean bathroom'
         }
       ]
     },
     // Dining
-    {
-      category: 'Dining',
-      images: [
-        {
-          src: 'https://images.unsplash.com/photo-1652788613166-15a6972a43a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80',
-          alt: 'Dining Area',
-          description: 'Common dining area'
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1577303935007-0d306ee638cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-          alt: 'Food Serving',
-          description: 'Delicious meals served daily'
-        },
-        {
-          src: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-          alt: 'Breakfast Spread',
-          description: 'Our breakfast options'
-        }
-      ]
-    },
+    // {
+    //   category: 'Dining',
+    //   images: [
+    //     {
+    //       src: 'https://images.unsplash.com/photo-1652788613166-15a6972a43a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1074&q=80',
+    //       alt: 'Dining Area',
+    //       description: 'Common dining area'
+    //     },
+    //     {
+    //       src: 'https://images.unsplash.com/photo-1577303935007-0d306ee638cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    //       alt: 'Food Serving',
+    //       description: 'Delicious meals served daily'
+    //     },
+    //     {
+    //       src: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+    //       alt: 'Breakfast Spread',
+    //       description: 'Our breakfast options'
+    //     }
+    //   ]
+    // },
     // Amenities
     {
       category: 'Amenities',
       images: [
         {
-          src: 'https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+          src: '/lovable-uploads/reception.jpg',
           alt: 'Reception',
           description: '24/7 reception desk'
         },
         {
-          src: 'https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1171&q=80',
-          alt: 'Lobby',
-          description: 'Comfortable lobby area'
+          src: '/lovable-uploads/dining.jpg',
+          alt: 'Dining Area',
+          description: 'Common dining area'
         },
-        {
-          src: 'https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
-          alt: 'Parking',
-          description: 'Free parking facility'
-        }
+        // {
+        //   src: 'https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80',
+        //   alt: 'Parking',
+        //   description: 'Free parking facility'
+        // }
       ]
     }
   ];
@@ -108,6 +108,9 @@ const Gallery = () => {
     setSelectedImage(null);
     document.body.style.overflow = 'auto';
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
   
   return (
     <div className="min-h-screen">

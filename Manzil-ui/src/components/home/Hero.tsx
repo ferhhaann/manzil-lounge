@@ -26,7 +26,10 @@ const Hero = () => {
   const handleBookNow = () => {
     navigate('/booking');
   };
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  
   const handleExploreRooms = () => {
     navigate('/rooms');
   };

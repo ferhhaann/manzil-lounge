@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/common/Button';
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from 'emailjs-com'; // add at the top
 
 const Contact = () => {
   const { toast } = useToast();
@@ -20,24 +21,62 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // In a real application, you would send this data to a server
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out! We'll get back to you shortly.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+  
+    const { name, email, phone, subject, message } = formData;
+  
+    if (!name || !email || !subject || !message) {
+      toast({
+        title: 'Validation Error',
+        description: 'Please fill out all required fields.',
+        variant: 'destructive',
+      });
+      return;
+    }
+  
+    const templateParams = {
+      name,
+      email,
+      phone,
+      subject,
+      message,
+    };
+  
+    emailjs
+      .send(
+        'service_veymaee',
+        'template_fv111ds',
+        templateParams,
+        'to2m0kTtNdkXyBlep'
+      )
+      .then(() => {
+        toast({
+          title: 'Message Sent',
+          description: 'Thank you for reaching out! We’ll get back to you shortly.',
+        });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        });
+      })
+      .catch((error) => {
+        console.error('EmailJS error:', error);
+        toast({
+          title: 'Failed to Send',
+          description: 'Something went wrong. Please try again later.',
+          variant: 'destructive',
+        });
+      });
   };
+  
   
   const contactInfo = [
     {
@@ -248,7 +287,7 @@ const Contact = () => {
               
               <div className="rounded-lg overflow-hidden h-[250px] md:h-[300px]">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15782.815827475622!2d76.89872603049925!3d8.570976036861325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05beb825a14333%3A0x4ae71beeef9faf1!2sKazhakkoottam%2C%20Kerala!5e0!3m2!1sen!2sin!4v1649320876851!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4184531155943!2d76.87156451090001!3d8.555698591452515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05bfb4877b0e75%3A0xffa3f2133a113cf3!2sAS%20Manzil%20Lounge!5e0!3m2!1sen!2sin!4v1745126963288!5m2!1sen!2sin" 
                   width="100%" 
                   height="300" 
                   style={{ border: 0 }}
