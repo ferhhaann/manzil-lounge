@@ -5,7 +5,7 @@ import Footer from '@/components/layout/Footer';
 import { DatePickerWithRange } from '@/components/booking/DateRangePicker';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
-import emailjs from 'emailjs-com';
+// emailjs will be dynamically imported when needed
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ const Booking = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
     const { from, to } = formData.dateRange;
@@ -70,29 +70,32 @@ const Booking = () => {
       checkin: new Date(from).toLocaleDateString('en-GB'),
       checkout: new Date(to).toLocaleDateString('en-GB'),
     };
-  
-    emailjs
-      .send(
+
+    try {
+      // Dynamic import to reduce initial bundle size
+      const emailjs = await import('@emailjs/browser');
+      
+      await emailjs.send(
         'service_veymaee',
         'template_yqcq86p',
         templateParams,
         'to2m0kTtNdkXyBlep'
-      )
-      .then(() => {
-        toast.success('Booking enquiry sent to hotel!');
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          roomType: '',
-          dateRange: { from: '', to: '' },
-        });
-      })
-      .catch((error) => {
-        console.error('EmailJS Error:', error);
-        toast.error('Failed to send booking email.');
-      })
-      .finally(() => setLoading(false)); // Stop loading
+      );
+      
+      toast.success('Booking enquiry sent to hotel!');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        roomType: '',
+        dateRange: { from: '', to: '' },
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast.error('Failed to send booking email.');
+    } finally {
+      setLoading(false); // Stop loading
+    }
   };
   
 

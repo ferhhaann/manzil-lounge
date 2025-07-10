@@ -4,7 +4,6 @@ import Footer from '@/components/layout/Footer';
 import Button from '@/components/common/Button';
 import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import emailjs from 'emailjs-com'; // add at the top
 
 const Contact = () => {
   const { toast } = useToast();
@@ -15,6 +14,7 @@ const Contact = () => {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -25,7 +25,7 @@ const Contact = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
   
     const { name, email, phone, subject, message } = formData;
@@ -38,6 +38,8 @@ const Contact = () => {
       });
       return;
     }
+
+    setIsSubmitting(true);
   
     const templateParams = {
       name,
@@ -46,37 +48,40 @@ const Contact = () => {
       subject,
       message,
     };
-  
-    emailjs
-      .send(
+
+    try {
+      // Dynamic import to reduce initial bundle size
+      const emailjs = await import('@emailjs/browser');
+      
+      await emailjs.send(
         'service_veymaee',
         'template_fv111ds',
         templateParams,
         'to2m0kTtNdkXyBlep'
-      )
-      .then(() => {
-        toast({
-          title: 'Message Sent',
-          description: 'Thank you for reaching out! We’ll get back to you shortly.',
-        });
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-        });
-      })
-      .catch((error) => {
-        console.error('EmailJS error:', error);
-        toast({
-          title: 'Failed to Send',
-          description: 'Something went wrong. Please try again later.',
-          variant: 'destructive',
-        });
+      );
+      
+      toast({
+        title: 'Message Sent',
+        description: 'Thank you for reaching out! We\'ll get back to you shortly.',
       });
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast({
+        title: 'Failed to Send',
+        description: 'Something went wrong. Please try again later.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
-  
   
   const contactInfo = [
     {
@@ -251,9 +256,10 @@ const Contact = () => {
                   size="lg" 
                   className="w-full sm:w-auto flex items-center justify-center"
                   type="submit"
+                  disabled={isSubmitting}
                 >
                   <Send size={18} className="mr-2" />
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </div>
