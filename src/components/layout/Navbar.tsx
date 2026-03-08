@@ -34,11 +34,7 @@ const Navbar = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -69,28 +65,36 @@ const Navbar = () => {
     <>
       <nav 
         className={cn(
-          'fixed top-0 left-0 w-full z-50 transition-all duration-300',
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+          'fixed top-0 left-0 w-full z-50 transition-all duration-500',
+          scrolled 
+            ? 'bg-background/80 backdrop-blur-xl shadow-sm border-b border-border/50 py-3' 
+            : 'bg-transparent py-5'
         )}
       >
         <div className="container-custom flex items-center justify-between">
           <Link 
             to="/" 
-            className="flex items-center space-x-2 font-serif text-2xl text-hotel-navy z-50"
+            className="flex items-center space-x-1 font-serif text-2xl z-50"
           >
-            <span className="font-bold">Manzil</span>
-            <span className="text-hotel-gold">Lounge</span>
+            <span className={cn("font-bold transition-colors duration-300", scrolled ? "text-foreground" : "text-white")}>Manzil</span>
+            <span className="text-accent">Lounge</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-1">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
                   to={link.path}
                   className={cn(
-                    'nav-link',
-                    isActive(link.path) && 'nav-link-active'
+                    'px-4 py-2 text-sm font-medium rounded-full transition-all duration-300',
+                    scrolled 
+                      ? isActive(link.path) 
+                        ? 'bg-primary text-primary-foreground' 
+                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                      : isActive(link.path)
+                        ? 'bg-white/20 text-white backdrop-blur-sm'
+                        : 'text-white/70 hover:text-white hover:bg-white/10'
                   )}
                 >
                   {link.name}
@@ -101,13 +105,17 @@ const Navbar = () => {
               variant="accent" 
               size="md" 
               onClick={handleBookNow}
+              className="shadow-lg shadow-accent/20 rounded-full"
             >
               Book Now
             </Button>
           </div>
           
           <button 
-            className="md:hidden text-hotel-navy z-50" 
+            className={cn(
+              "md:hidden z-50 p-2 rounded-full transition-colors",
+              scrolled ? "text-foreground" : "text-white"
+            )}
             onClick={toggleMenu}
             aria-label="Menu"
           >

@@ -7,104 +7,80 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-hotel-navy text-white pt-16 pb-8">
-      <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* About Section */}
+    <footer className="bg-primary text-primary-foreground pt-20 pb-8 relative overflow-hidden">
+      {/* Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[150px]"></div>
+
+      <div className="container-custom relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <div className="mb-4 flex items-center space-x-2 font-serif text-2xl">
+            <div className="mb-5 flex items-center space-x-1 font-serif text-2xl">
               <span className="font-bold">Manzil</span>
-              <span className="text-hotel-gold">Lounge</span>
+              <span className="text-accent">Lounge</span>
             </div>
-            <p className="text-white/80 mb-4">
+            <p className="text-primary-foreground/60 mb-6 leading-relaxed">
               A clean, neat, and quiet 2-star hotel offering comfortable accommodations near Kazhakoottom Railway Station in Trivandrum.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="h-8 w-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="h-8 w-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                <Instagram size={18} />
-              </a>
-              <a href="#" className="h-8 w-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                <Twitter size={18} />
-              </a>
+              {[Facebook, Instagram, Twitter].map((Icon, i) => (
+                <a key={i} href="#" className="h-10 w-10 flex items-center justify-center rounded-xl bg-primary-foreground/5 border border-primary-foreground/10 hover:bg-accent/20 hover:border-accent/30 hover:text-accent transition-all duration-300">
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
           
-          {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-serif font-medium mb-4 pb-2 border-b border-white/20">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/rooms" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Rooms & Accommodation
-                </Link>
-              </li>
-              <li>
-                <Link to="/dining" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Dining Space
-                </Link>
-              </li>
-              <li>
-                <Link to="/location" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Location & Accessibility
-                </Link>
-              </li>
-              <li>
-                <Link to="/gallery" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Gallery
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-white/80 hover:text-white hover:translate-x-1 transition-all inline-block">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-          
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-serif font-medium mb-4 pb-2 border-b border-white/20">Contact Information</h3>
+            <h3 className="text-lg font-serif font-medium mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-hotel-gold mt-1 flex-shrink-0" />
-                <span className="text-white/80">Near Kazhakoottom Railway Station, Trivandrum, Kerala, India</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-hotel-gold flex-shrink-0" />
-                <span className="text-white/80">+91 8089654380</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-hotel-gold flex-shrink-0" />
-                <span className="text-white/80">loungeasmanzil@gmail.com</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <Clock size={18} className="text-hotel-gold flex-shrink-0" />
-                <span className="text-white/80">24/7 Reception</span>
-              </li>
+              {[
+                { to: '/', label: 'Home' },
+                { to: '/rooms', label: 'Rooms & Accommodation' },
+                { to: '/dining', label: 'Dining Space' },
+                { to: '/location', label: 'Location & Accessibility' },
+                { to: '/gallery', label: 'Gallery' },
+                { to: '/contact', label: 'Contact Us' }
+              ].map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="text-primary-foreground/60 hover:text-accent transition-colors duration-300 text-sm">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           
-          {/* Newsletter */}
           <div>
-            <h3 className="text-lg font-serif font-medium mb-4 pb-2 border-b border-white/20">Newsletter</h3>
-            <p className="text-white/80 mb-3">Subscribe to receive updates on our special offers and news.</p>
+            <h3 className="text-lg font-serif font-medium mb-6">Contact</h3>
+            <ul className="space-y-4">
+              {[
+                { Icon: MapPin, text: 'Near Kazhakoottom Railway Station, Trivandrum, Kerala, India' },
+                { Icon: Phone, text: '+91 8089654380' },
+                { Icon: Mail, text: 'loungeasmanzil@gmail.com' },
+                { Icon: Clock, text: '24/7 Reception' }
+              ].map(({ Icon, text }, i) => (
+                <li key={i} className="flex items-start space-x-3">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon size={14} className="text-accent" />
+                  </div>
+                  <span className="text-primary-foreground/60 text-sm">{text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h3 className="text-lg font-serif font-medium mb-6">Newsletter</h3>
+            <p className="text-primary-foreground/60 mb-4 text-sm leading-relaxed">Subscribe to receive updates on our special offers and news.</p>
             <form className="space-y-3">
               <input 
                 type="email" 
                 placeholder="Your Email" 
-                className="w-full px-4 py-2 bg-white/10 text-white rounded-md border border-white/20 focus:outline-none focus:border-hotel-gold"
+                className="w-full px-4 py-3 bg-primary-foreground/5 text-primary-foreground rounded-xl border border-primary-foreground/10 focus:outline-none focus:border-accent/50 focus:bg-primary-foreground/10 transition-all duration-300 text-sm placeholder:text-primary-foreground/30"
               />
               <button 
                 type="submit" 
-                className="w-full bg-hotel-gold hover:bg-opacity-90 text-white py-2 rounded-md transition-colors"
+                className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-3 rounded-xl transition-all duration-300 text-sm font-medium shadow-lg shadow-accent/20"
               >
                 Subscribe
               </button>
@@ -112,8 +88,8 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-12 pt-6 border-t border-white/20 text-center text-white/60 text-sm">
-          <p>&copy; {currentYear} Manzil Lounge. All rights reserved.</p>
+        <div className="mt-16 pt-8 border-t border-primary-foreground/10 text-center">
+          <p className="text-primary-foreground/40 text-sm">&copy; {currentYear} Manzil Lounge. All rights reserved.</p>
         </div>
       </div>
     </footer>
